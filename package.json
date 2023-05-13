@@ -1,0 +1,25 @@
+{
+  "name": "learn-backend-nawasena",
+  "version": "1.0.0",
+  "description": "Learn Progress Adcom",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adcomofficial/LEARN-BACKEND-NAWASENA.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "adcomofficial",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adcomofficial/LEARN-BACKEND-NAWASENA/issues"
+  },
+  "homepage": "https://github.com/adcomofficial/LEARN-BACKEND-NAWASENA#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

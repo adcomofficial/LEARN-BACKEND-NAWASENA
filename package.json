@@ -4,7 +4,7 @@
   "description": "Learn Progress Adcom",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start:dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/adcomofficial/LEARN-BACKEND-NAWASENA#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2"
   }
 }

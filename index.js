@@ -1,10 +1,17 @@
 // Buat variabel untuk menampung package
 const express = require("express");
+const bcryptjs = require("bcryptjs");
 const app = express();
 
 // Middleware untuk express dapat menerima request dari user
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Fake Database
+const database = require("./app/config/database");
+
+// Minggu 2
+app.use("/auth", require("./app/api/auth/router"));
 
 // 1.) Membuat index route
 app.get("/", function (req, res, next) {
@@ -105,6 +112,46 @@ app.post("/register", function (req, res, next) {
   //   message: "Sukses",
   //   data: req.body,
   // });
+});
+
+// Implementasi Endpoint Registrasi Menggunakan Array
+app.post("/auth/v1/register", async function (req, res, next) {
+  /**
+   * 1.) Kita ambil request dari user
+   * 2.) Lakukan validasi form
+   * 3.) Lakukan validasi terhadap email, Jika terdapat email maka berikan http code bad request dan message email sudah terdaftar
+   * // 4.) Enkripsi passworsd sebelum disimpan kedalam database
+   * 5.) Kita masukkan kedalam database
+   *
+   */
+
+  /**
+   * Enkripsi
+   * Refactoring
+   */
+
+  // 1.) Ambil input user
+  const { email, password } = req.body;
+
+  // 2.)
+  if (!email || !password)
+    return res.status(400).json({ message: "All input are required" });
+
+  // 3.)
+  const checkEmail = database.find((user) => user.email === email);
+  if (checkEmail) {
+    res.status(400).json({ message: "Email already in used" });
+  }
+
+  const hashPassword = await bcryptjs.hash(password, 10);
+
+  // 4.)
+  const new_data = {
+    email,
+    password: hashPassword,
+  };
+  database.push(new_data);
+  res.status(201).json({ message: "Berhasil mendaftar", data: database });
 });
 
 // Port

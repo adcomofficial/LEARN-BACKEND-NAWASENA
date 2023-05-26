@@ -2,19 +2,36 @@
 const express = require("express");
 const app = express();
 
+
 // Middleware untuk express dapat menerima request dari user
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+Minggu 2
+app.use("/auth", require("./app/api/auth/router"));
+
 // 1.) Membuat index route
 app.get("/", function (req, res, next) {
+  /**
+   * TODO : Membuat Hello world from express pertama kita
+   */
+
   res.json({
     message: "Hello world dari express",
   });
 });
 
+// create
 app.post("/create", function (req, res, next) {
   const { username, email, password } = req.body;
+
+  /**
+   **
+   * TODO : Menangkap semua request dari user
+   * Menggunakan metode Destructuring Method dan cara Native
+   **
+   */
 
   console.log("Ini secara destruc");
   console.log(username);
@@ -33,44 +50,19 @@ app.post("/create", function (req, res, next) {
     message: "Sukses",
     data: req.body,
   });
-
-  // username
-  // email
-  // password,
-
-  //   res.json({
-  //     message: "Ini pesan",
-  //     data: req.body,
-  //   });
+  K;
 });
 
 // Endpoint register and simple validate
 app.post("/register", function (req, res, next) {
   const { name, email, password } = req.body;
 
-  // DRY =  DONT REPEAT YOURSELF
+  /**
+   * TODO : Membuat validasi sederhana agar semua form diisikan
+   * Introduction to simple validate method using if else
+   */
 
-  // Simple 1
-  if (name == "" || email == "" || password == "") {
-    res.status(400).json({
-      message: "Harap semua data diisi",
-    });
-  } else {
-    res.status(201).json({
-      message: "Berhasil mendaftar",
-    });
-  }
-
-  // Simple 2
-  if (!name || !email || !password)
-    return res.status(400).json({
-      message: "Harap isi semua data",
-    });
-  res.status(201).json({
-    message: "Berhasil mendaftar",
-  });
-
-  // Simple 3
+  // Example 1
   if (name == "") {
     res.status(400).json({
       message: "Harap field nama disi",
@@ -89,22 +81,25 @@ app.post("/register", function (req, res, next) {
     });
   }
 
-  /**
-   * name
-   * email
-   * password
-   */
-  // console.log(req.body);
+  // Example 2
+  if (name == "" || email == "" || password == "") {
+    res.status(400).json({
+      message: "Harap semua data diisi",
+    });
+  } else {
+    res.status(201).json({
+      message: "Berhasil mendaftar",
+    });
+  }
 
-  // Semisal name kosong '' Pesan : Harap filed name diisi
-  // Jika email : Harap filed email diisi
-  // Jika password : Harap filed password diisi
-
-  // Memberikan responses kembali kepada user
-  // res.json({
-  //   message: "Sukses",
-  //   data: req.body,
-  // });
+  // Example 3
+  if (!name || !email || !password)
+    return res.status(400).json({
+      message: "Harap isi semua data",
+    });
+  res.status(201).json({
+    message: "Berhasil mendaftar",
+  });
 });
 
 // Port

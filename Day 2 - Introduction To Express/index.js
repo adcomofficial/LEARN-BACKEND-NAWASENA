@@ -2,11 +2,13 @@
 const express = require("express");
 const app = express();
 
+
 // Middleware untuk express dapat menerima request dari user
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Minggu 2
+
+Minggu 2
 app.use("/auth", require("./app/api/auth/router"));
 
 // 1.) Membuat index route
@@ -20,6 +22,7 @@ app.get("/", function (req, res, next) {
   });
 });
 
+// create
 app.post("/create", function (req, res, next) {
   const { username, email, password } = req.body;
 

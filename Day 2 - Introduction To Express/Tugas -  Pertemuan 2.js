@@ -30,6 +30,6 @@
 
 // Example Responses
 {
-  status: 200;
-  message: "This if from example routes";
+    status: 200;
+    message: "This if from example routes";
 }

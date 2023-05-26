@@ -38,8 +38,6 @@ if (checkEmail) {
   console.log(users);
 }
 
-// or with this
-
 /**
  * if (checkEmail) return console.log("Email sudah terdaftar");
  * users.push(new_data);

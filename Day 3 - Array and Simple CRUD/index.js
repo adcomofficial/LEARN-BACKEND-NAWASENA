@@ -21,20 +21,14 @@ app.use(express.urlencoded({ extended: true }))
 const users = [
     {
         id: "4e9b81c0- e63e - 4e0d - b397 - 4c2ac0a832be",
-        email: "muhammad@gmail.com",
-        password: "123",
+        email: "adcom@gmail.com",
+        password: "nawasena",
         date: new Date()
     },
     {
         id: "8da87e87-e25b-4ab0-bee3-b138dcbe25d8",
-        email: "iyan@gmail.com",
-        password: "123",
-        date: new Date()
-    },
-    {
-        id: "8da87e87-e25b-4ab0-bee3-b138dcbe25d8",
-        email: "almadina@gmail.com",
-        password: "123",
+        email: "22@gmail.com",
+        password: "theBest",
         date: new Date()
     },
 ];

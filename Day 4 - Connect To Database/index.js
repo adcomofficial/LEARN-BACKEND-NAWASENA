@@ -115,7 +115,7 @@ app.delete('/delete/:id', function (req, res, next) {
     const id = req.params.id
 
 
-    connection.query('DELETE FROM users WHERE email=?', id, function (error, result, field) {
+    connection.query('DELETE FROM users WHERE id=?', id, function (error, result, field) {
         if (error) return res.status(500).json({ message: error })
         res.status(200).json({ data: result })
     })

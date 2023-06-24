@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const bcryptjs = require('bcryptjs')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -19,6 +18,9 @@ app.use(express.urlencoded({ extended: true }))
  */
 
 
+// Untuk proses enkripsi data password
+const bcryptjs = require('bcryptjs')
+
 // Buat variabel untuk menampung package mysql2 yang sudah diinstall
 const mysql = require('mysql2');
 
@@ -26,7 +28,8 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'PENJUALAN'
+    password: '',
+    database: 'LEARN-BACKEND-NAWASENA' // -- PERHATIKAN DISINI : Pastikan kalian set database ini sesuai dengan database kalian
 });
 
 
@@ -41,6 +44,8 @@ connection.connect(function (error) {
 app.post('/auth/register', async function (req, res, next) {
 
     /**
+     *  Alur Create Register User
+     *
      * 1. Ambil input user
      * 2. Lakukan validasi
      * 3. Masukkan kedalam database kita
